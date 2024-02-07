@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "cert": "rm -rf .cert && mkdir -p .cert && mkcert -key-file ./.cert/key.pem -cert-file ./.cert/cert.pem tg.bot.dev",
     "preview": "vite preview"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

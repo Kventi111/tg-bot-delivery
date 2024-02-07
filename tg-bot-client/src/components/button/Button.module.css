@@ -1,0 +1,9 @@
+.root {
+    all: unset;
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    width: 90%;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+}

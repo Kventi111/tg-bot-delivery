@@ -59,7 +59,7 @@ button:focus-visible {
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   height: 100svh;
 }
 
@@ -70,8 +70,12 @@ button:focus-visible {
 }
 
 .content {
+  /* width: 100vw; */
   flex-grow: 1;
-  border: 1px solid white;
+  color: var(--tg-theme-text-color);
+  background-color: var(--tg-theme-secondary-bg-color);
+  /* width: 100dvw; */
+  /* border: 1px solid white; */
 }
 
 .footer {
@@ -79,6 +83,7 @@ button:focus-visible {
   position: sticky;
   bottom: 0;
   width: 100%;
+  background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .list {
