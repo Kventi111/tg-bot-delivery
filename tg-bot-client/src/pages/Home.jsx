@@ -71,7 +71,6 @@ export const Home = () => {
             // gridTemplateRows: "max-content",
             alignItems: "stretch",
             gap: "12px",
-            marginBottom: "100px",
           }}
         >
           <Link to="/1">

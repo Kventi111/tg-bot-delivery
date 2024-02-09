@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../components/button/Button";
+import { Counter } from "../components/counter/Counter";
 import { Select } from "../components/select/Select";
 import { CheckboxGroup } from "../components/checkboxGroup/CheckboxGroup";
 
@@ -16,13 +17,14 @@ tg.BackButton.onClick(() => {
 const Footer = ({ children }) => <div className="footer">{children}</div>;
 
 export const Detail = () => {
-  // tg.BackButton.show();
+  tg.BackButton.show();
   const [option, setOption] = useState(null);
 
   return (
     <>
       <div
-        style={{ display: "flex", justifyContent: "center", padding: "32px 0" }}
+        className="contentWrapper"
+        style={{ display: "flex", justifyContent: "center" }}
       >
         <img
           style={{
@@ -82,16 +84,12 @@ export const Detail = () => {
           />
         </div>
       </div>
-      {/* <Footer>
+      <Footer>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <button>+</button>
-            <span>0</span>
-            <button>-</button>
-          </div>
+          <Counter initialCount={2} />
           <Button onClick={() => {}} text="Добавить 650 ₽" />
         </div>
-      </Footer> */}
+      </Footer>
     </>
   );
 };

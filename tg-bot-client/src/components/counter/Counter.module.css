@@ -15,7 +15,9 @@
     font-weight: 600 !important;
     max-width: 36px !important;
     background-color: #0000001F;
+    padding: 5px 8px !important;
     color: black;
+    border-radius: 10px !important;
 
     &.fulled {
         max-width: 100% !important;
