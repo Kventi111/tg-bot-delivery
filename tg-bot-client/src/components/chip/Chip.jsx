@@ -1,13 +1,16 @@
 import cls from "classnames";
 import styles from "./Chip.module.css";
 
-export const Chip = ({ onClick, text, active }) => {
-  return (
+export const Chip = ({ onSelect, items, currentCategoryId }) => {
+  return items.map((item) => (
     <span
-      className={cls(styles.root, { [styles.active]: active })}
-      onClick={onClick}
+      key={item.id}
+      className={cls(styles.root, {
+        [styles.active]: item.id === currentCategoryId,
+      })}
+      onClick={() => onSelect(item)}
     >
-      {text}
+      {item.value}
     </span>
-  );
+  ));
 };

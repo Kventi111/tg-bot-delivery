@@ -3,9 +3,11 @@
     background-color: transparent;
     padding: 12px 16px;
     font-size: 12px;
-    color: var(--tg-theme-button-text-color);
+    color:  var(--tg-theme-text-color);
 
     &.active {
-        background-color: var(--tg-theme-button-color);
+        background-color: white;
+        color: black;
     }
 }
+

@@ -7,6 +7,7 @@ import { Cart } from "./pages/Cart";
 import { Checkout } from "./pages/Checkout";
 import { OrderDetails } from "./pages/OrderDetails";
 import "./App.css";
+import "./index.css";
 
 const tg = window.Telegram.WebApp;
 // const isPremium = tg.initDataUnsafe?.user?.is_premium;

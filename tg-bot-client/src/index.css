@@ -11,6 +11,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* height: 100vh; */
+  /* border: 1px solid blue */
+
 }
 
 a {
@@ -27,7 +30,8 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  /* border: 1px solid blue; */
 }
 
 h1 {
@@ -36,6 +40,10 @@ h1 {
 }
 
 button {
+  all: unset;
+}
+
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -54,7 +62,7 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 .wrapper {
   display: flex;
@@ -70,17 +78,24 @@ button:focus-visible {
 }
 
 .content {
+  /* position: relative; */
   /* width: 100vw; */
   flex-grow: 1;
+  /* height: 100vh; */
   color: var(--tg-theme-text-color);
   background-color: var(--tg-theme-secondary-bg-color);
   /* width: 100dvw; */
-  /* border: 1px solid white; */
+  /* border: 1px solid red; */
+}
+
+.contentWrapper {
+  padding: 0 16px;
 }
 
 .footer {
-  padding: 10px;
   position: sticky;
+  padding: 8px 16px;
+  /* height: 100px; */
   bottom: 0;
   width: 100%;
   background-color: var(--tg-theme-secondary-bg-color);
@@ -122,8 +137,8 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  /* button {
     background-color: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
-  }
+  } */
 }
