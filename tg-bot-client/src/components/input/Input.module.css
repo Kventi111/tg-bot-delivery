@@ -1,0 +1,17 @@
+
+.root {
+    all: unset;
+
+    width: 100%;
+    /* background-color: var(--tg-theme-bg-color); */
+    /* background-color: var(--tg-theme-hint-color); */
+    background-color: rgba(232, 232, 233, 1);
+    color: black;
+    padding: 18px 16px;
+    border-radius: 12px;
+
+    &::placeholder {
+        color: black;
+        opacity: 1;
+    }
+}

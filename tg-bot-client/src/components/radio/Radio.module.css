@@ -1,0 +1,84 @@
+.radioGroupRoot {
+    display: flex;
+    flex-direction: column;
+}
+
+.radioGroupItemWrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 4px 8px;
+
+    &:hover {
+        .radioGroupItem {
+            border-color: red
+        }
+        .radioGroupItemLabel {
+            color: red
+        }
+    }
+
+    &.selected {
+        .radioGroupItem {
+            border-color: red
+        }
+    }
+}
+
+.radioGroupItemLabel {
+    color: white;
+    font-size: 14px;
+    padding-left: 8px;
+    cursor: pointer;
+    letter-spacing: -0.28px;
+    line-height: 24px;
+
+    &.text-transform-none {
+      text-transform: none;
+    }
+
+    &.text-transform-uppercase {
+      text-transform: uppercase;
+    }
+
+    &.text-transform-capitalize {
+      text-transform: capitalize;
+    }
+
+    &.text-transform-lowercase{
+      text-transform: lowercase;
+    }
+}
+
+.radioGroupItem {
+    background-color: transparent;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    border: 2px solid white;
+    padding: 0;
+
+    &:focus {
+        border-color: red;
+    }
+}
+
+.radioGroupIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 7px;
+        height: 7px;
+        border-radius: 9999px;
+        background-color: red;
+    }
+}
