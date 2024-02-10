@@ -1,17 +1,13 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "./pages/Layout";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/home/Home";
+import { PageLayout } from "./pages/PageLayout";
 import { Detail } from "./pages/Datail";
-import { Cart } from "./pages/Cart";
+import { Cart } from "./pages/cart/Cart";
 import { Checkout } from "./pages/Checkout";
 import { OrderDetails } from "./pages/OrderDetails";
-import "./App.css";
-import "./index.css";
 
 const tg = window.Telegram.WebApp;
-// const isPremium = tg.initDataUnsafe?.user?.is_premium;
-// tg.BackButton.isVisible = true;
 
 function App() {
   console.log({ tg });
@@ -25,7 +21,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<PageLayout />}>
         <Route index element={<Home />} />
         <Route path=":id" element={<Detail />} />
         <Route path="cart" element={<Cart />} />

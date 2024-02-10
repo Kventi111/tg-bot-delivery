@@ -1,13 +1,20 @@
 .root {
-    border-radius: 12px;
-    background-color: transparent;
-    padding: 12px 16px;
-    font-size: 12px;
-    color:  var(--tg-theme-text-color);
+  border-radius: 12px;
+  background-color: transparent;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--tg-theme-text-color);
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 
-    &.active {
-        background-color: white;
-        color: black;
-    }
+  &.active {
+    background-color: white;
+    color: black;
+  }
 }
-

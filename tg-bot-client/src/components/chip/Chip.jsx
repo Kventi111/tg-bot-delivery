@@ -3,7 +3,7 @@ import styles from "./Chip.module.css";
 
 export const Chip = ({ onSelect, items, currentCategoryId }) => {
   return items.map((item) => (
-    <span
+    <div
       key={item.id}
       className={cls(styles.root, {
         [styles.active]: item.id === currentCategoryId,
@@ -11,6 +11,6 @@ export const Chip = ({ onSelect, items, currentCategoryId }) => {
       onClick={() => onSelect(item)}
     >
       {item.value}
-    </span>
+    </div>
   ));
 };

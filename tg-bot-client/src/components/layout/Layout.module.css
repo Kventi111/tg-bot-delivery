@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100svh;
+}
+
+.content {
+  flex-grow: 1;
+  background-color: var(--tg-theme-secondary-bg-color);
+}
+
+.contentInner {
+  height: calc(100% - 60px);
+  padding: 0 16px;
+  background-color: var(--tg-theme-secondary-bg-color);
+}
+
+.footer {
+  position: sticky;
+  padding: 8px 16px;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--tg-theme-secondary-bg-color);
+}

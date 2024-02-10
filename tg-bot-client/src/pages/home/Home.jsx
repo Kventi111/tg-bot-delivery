@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Chip } from "../components/chip/Chip";
-import { Button } from "../components/button/Button";
-import { Card } from "../components/card/Card";
+import { Chip } from "../../components/chip/Chip";
+import { Button } from "../../components/button/Button";
+import { ContentInner } from "../../components/layout/ContentInner";
+import { Footer } from "../../components/layout/Footer";
+import { Card } from "../../components/card/Card";
+import { useSlider } from "../../hooks/useSlider";
 
-const Footer = ({ children }) => <div className="footer">{children}</div>;
-
-// const tg = window.Telegram.WebApp;
-// tg.isExpanded = true;
-// tg.BackButton = true;
-
-// tg.BackButton.isVisible = false;
-// tg.BackButton.hide();
+import styles from "./Home.module.css";
 
 const categories = [
   {
@@ -38,41 +34,48 @@ const categories = [
     id: "6",
     value: "Пицца",
   },
+  {
+    id: "7",
+    value: "Бургеры",
+  },
+  {
+    id: "8",
+    value: "Пицца",
+  },
+  {
+    id: "9",
+    value: "Пицца",
+  },
+  {
+    id: "10",
+    value: "Бургеры",
+  },
+  {
+    id: "11",
+    value: "Пицца",
+  },
+  {
+    id: "12",
+    value: "Пицца",
+  },
 ];
 
 export const Home = () => {
+  const { containerRef } = useSlider();
   const navigate = useNavigate();
   const [currentCategory, setCurrentCategory] = useState(null);
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          gap: "12px",
-          margin: "12px 0 24px 0",
-          overflow: "auto",
-          width: "100%",
-          scrollSnapAlign: "start",
-          scrollSnapType: "x proximity",
-        }}
-      >
+      <div ref={containerRef} className={styles.categories}>
         <Chip
           items={categories}
           currentCategoryId={currentCategory?.id}
           onSelect={setCurrentCategory}
         />
       </div>
-      <div className="contentWrapper">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            // gridTemplateRows: "max-content",
-            alignItems: "stretch",
-            gap: "12px",
-          }}
-        >
+      <ContentInner>
+        <div className={styles.productItems}>
           <Link to="/1">
             <Card
               imgUrl={"assets/burger.png"}
@@ -125,7 +128,7 @@ export const Home = () => {
             count={0}
           />
         </div>
-      </div>
+      </ContentInner>
       <Footer>
         <Button onClick={() => navigate("/cart")} text="Корзина 650 ₽" />
       </Footer>
