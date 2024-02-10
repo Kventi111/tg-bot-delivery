@@ -2,6 +2,8 @@ import * as RadioGroup from "@radix-ui/react-radio-group";
 import clsx from "classnames";
 import styles from "./Radio.module.css";
 
+import CheckIcon from "./check.svg?react";
+
 export const Radio = ({ onSelect, selected = "", items }) => (
   <RadioGroup.Root className={styles.radioGroupRoot} value={selected}>
     {items.map(({ label, value }) => (
@@ -12,16 +14,17 @@ export const Radio = ({ onSelect, selected = "", items }) => (
           [styles.selected]: selected === value,
         })}
       >
+        <label className={clsx(styles.radioGroupItemLabel)} htmlFor={label}>
+          {label}
+        </label>
         <RadioGroup.Item
           className={styles.radioGroupItem}
           value={value}
           id={value}
         >
-          <RadioGroup.Indicator className={styles.radioGroupIndicator} />
+          {/* <RadioGroup.Indicator className={styles.radioGroupIndicator} /> */}
+          <CheckIcon />
         </RadioGroup.Item>
-        <label className={clsx(styles.radioGroupItemLabel)} htmlFor={label}>
-          {label}
-        </label>
       </button>
     ))}
   </RadioGroup.Root>

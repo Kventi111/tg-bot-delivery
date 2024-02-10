@@ -5,7 +5,7 @@ import { PageLayout } from "./pages/PageLayout";
 import { Detail } from "./pages/Datail";
 import { Cart } from "./pages/cart/Cart";
 import { Checkout } from "./pages/Checkout";
-import { OrderDetails } from "./pages/OrderDetails";
+import { OrderDetails } from "./pages/orderDetail/OrderDetails";
 
 const tg = window.Telegram.WebApp;
 

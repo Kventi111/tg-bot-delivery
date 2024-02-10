@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite'
-import { readFileSync } from 'fs'
+import svgr from 'vite-plugin-svgr'
+// import { readFileSync } from 'fs'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    svgr()
+  ],
 })
 // export default defineConfig({
 //   plugins: [react()],

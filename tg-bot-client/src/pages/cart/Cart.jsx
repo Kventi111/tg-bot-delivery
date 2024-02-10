@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
+import { ContentInner } from "../../components/layout/ContentInner";
 
 import { CartItem } from "./CartItem";
 
@@ -19,14 +20,16 @@ export const Cart = () => {
 
   return (
     <>
-      <div className={styles.root}>
-        <CartItem
-          imgUrl={"/assets/burger.png"}
-          name={"Бургер из чего‑то там с чем‑то вкусным"}
-          desc={"medium"}
-          price={666}
-        />
-      </div>
+      <ContentInner>
+        <div className={styles.root}>
+          <CartItem
+            imgUrl={"/assets/burger.png"}
+            name={"Бургер из чего‑то там с чем‑то вкусным"}
+            desc={"medium"}
+            price={666}
+          />
+        </div>
+      </ContentInner>
       <Footer>
         <Button
           onClick={() => navigate("/orderDetails")}

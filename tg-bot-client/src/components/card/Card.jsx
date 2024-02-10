@@ -1,6 +1,6 @@
-import styles from "./Card.module.css";
-
 import { Counter } from "../counter/Counter";
+
+import styles from "./Card.module.css";
 
 export const Card = ({ imgUrl, price, name, options, count }) => {
   return (

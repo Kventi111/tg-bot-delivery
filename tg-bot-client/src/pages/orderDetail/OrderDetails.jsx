@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../components/button/Button";
-import { Radio } from "../components/radio/Radio";
-import { Input } from "../components/input/Input";
+import { Button } from "../../components/button/Button";
+import { Radio } from "../../components/radio/Radio";
+import { Input } from "../../components/input/Input";
+import { Footer } from "../../components/layout/Footer";
+import { ContentInner } from "../../components/layout/ContentInner";
+
+import styles from "./OrderDetails.module.css";
 
 const tg = window.Telegram.WebApp;
 
@@ -10,35 +15,31 @@ tg.BackButton.onClick(() => {
   history.back();
 });
 
-const Footer = ({ children }) => <div className="footer">{children}</div>;
-
 export const OrderDetails = () => {
   const navigate = useNavigate();
+  const [checkoutType, setCheckoutType] = useState("");
+  const [paymentType, setPaymentType] = useState("");
   tg.BackButton.show();
 
   return (
     <>
-      <div className="contentWrapper">
-        <div style={{ marginTop: "16px", marginBottom: "24px" }}>
-          <div
-            style={{ color: "#8E8E93", fontSize: "12px", marginBottom: "8px" }}
-          >
-            Доставка
-          </div>
+      <ContentInner>
+        <div className={styles.block}>
+          <div className={styles.title}>Доставка</div>
           <Radio
+            selected={checkoutType}
+            onSelect={setCheckoutType}
             items={[
               { value: "1", label: "Курьером" },
               { value: "2", label: "Самовывоз" },
             ]}
           />
         </div>
-        <div style={{ marginBottom: "24px" }}>
-          <div
-            style={{ color: "#8E8E93", fontSize: "12px", marginBottom: "8px" }}
-          >
-            Оплата
-          </div>
+        <div className={styles.block}>
+          <div className={styles.title}>Оплата</div>
           <Radio
+            selected={paymentType}
+            onSelect={setPaymentType}
             items={[
               { value: "1", label: "Онлайн" },
               { value: "2", label: "Наличные" },
@@ -84,7 +85,7 @@ export const OrderDetails = () => {
             <Input placeholder={"test"} />
           </div>
         </div>
-      </div>
+      </ContentInner>
       <Footer>
         <Button onClick={() => navigate("/checkout")} text="Продолжить" />
       </Footer>
