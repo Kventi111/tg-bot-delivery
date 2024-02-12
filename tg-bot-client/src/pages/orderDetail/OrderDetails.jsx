@@ -19,6 +19,9 @@ export const OrderDetails = () => {
   const navigate = useNavigate();
   const [checkoutType, setCheckoutType] = useState("");
   const [paymentType, setPaymentType] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [comment, setComment] = useState("");
   tg.BackButton.show();
 
   return (
@@ -47,42 +50,27 @@ export const OrderDetails = () => {
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div>
-            <div
-              style={{
-                color: "#8E8E93",
-                fontSize: "12px",
-                marginBottom: "8px",
-              }}
-            >
-              Номер телефона
-            </div>
-            <Input placeholder={"test"} />
+        <div className={styles.form}>
+          <div className={styles.field}>
+            <Input
+              label="test"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
-          <div>
-            <div
-              style={{
-                color: "#8E8E93",
-                fontSize: "12px",
-                marginBottom: "8px",
-              }}
-            >
-              Адрес доставки
-            </div>
-            <Input placeholder={"test"} />
+          <div className={styles.field}>
+            <Input
+              label="test"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </div>
-          <div>
-            <div
-              style={{
-                color: "#8E8E93",
-                fontSize: "12px",
-                marginBottom: "8px",
-              }}
-            >
-              Комментарий
-            </div>
-            <Input placeholder={"test"} />
+          <div className={styles.field}>
+            <Input
+              label="test"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
           </div>
         </div>
       </ContentInner>

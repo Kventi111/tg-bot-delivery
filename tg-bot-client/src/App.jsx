@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { tokenApi } from "./api";
+import { API_KEY } from "./api/constants";
 import { Home } from "./pages/home/Home";
 import { PageLayout } from "./pages/PageLayout";
 import { Detail } from "./pages/Datail";
@@ -16,7 +18,7 @@ function App() {
     tg.ready();
 
     // nomenclatureApi.getMenu("54e21b58-a3d7-402a-83ad-d96b074a171a")
-    // tokenApi.getToken(API_KEY)
+    tokenApi.getToken(API_KEY);
   }, []);
 
   return (
