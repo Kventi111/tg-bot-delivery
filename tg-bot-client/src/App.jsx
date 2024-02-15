@@ -4,12 +4,14 @@ import { tokenApi } from "./api";
 import { API_KEY } from "./api/constants";
 import { Home } from "./pages/home/Home";
 import { PageLayout } from "./pages/PageLayout";
-import { Detail } from "./pages/Datail";
+import { Detail } from "./pages/detail/Datail";
 import { Cart } from "./pages/cart/Cart";
-import { Checkout } from "./pages/Checkout";
+import { Checkout } from "./pages/checkout/Checkout";
 import { OrderDetails } from "./pages/orderDetail/OrderDetails";
 
 const tg = window.Telegram.WebApp;
+
+tg.expand();
 
 function App() {
   console.log({ tg });

@@ -1,5 +1,9 @@
 // import { useNavigate } from "react-router-dom";
-import { Button } from "../components/button/Button";
+import { Button } from "../../components/button/Button";
+import { Footer } from "../../components/layout/Footer";
+import { ContentInner } from "../../components/layout/ContentInner";
+
+import styles from "./Checkout.module.css";
 
 const tg = window.Telegram.WebApp;
 
@@ -8,23 +12,14 @@ tg.BackButton.onClick(() => {
   history.back();
 });
 
-const Footer = ({ children }) => <div className="footer">{children}</div>;
-
 export const Checkout = () => {
   //   const navigate = useNavigate();
   tg.BackButton.show();
 
   return (
     <>
-      <div className="contentWrapper">
-        <div
-          style={{
-            backgroundColor: "white",
-            borderRadius: "12px",
-            color: "black",
-            padding: "12px 0 12px 16px",
-          }}
-        >
+      <ContentInner>
+        <div className={styles.root}>
           Оплата заказа
           <div
             style={{
@@ -43,7 +38,7 @@ export const Checkout = () => {
               }}
             >
               <div>Пепперони х1</div>
-              <div>1 650 ₽</div>
+              <div style={{ paddingRight: "16px" }}>1 650 ₽</div>
             </div>
             <div
               style={{
@@ -53,7 +48,7 @@ export const Checkout = () => {
               }}
             >
               <div>Пепперони х1</div>
-              <div>1 650 ₽</div>
+              <div style={{ paddingRight: "16px" }}>1 650 ₽</div>
             </div>
             <div
               style={{
@@ -63,7 +58,7 @@ export const Checkout = () => {
               }}
             >
               <div>Пепперони х1</div>
-              <div>1 650 ₽</div>
+              <div style={{ paddingRight: "16px" }}>1 650 ₽</div>
             </div>
             <div
               style={{
@@ -73,7 +68,7 @@ export const Checkout = () => {
               }}
             >
               <div>Пепперони х1</div>
-              <div>650 ₽</div>
+              <div style={{ paddingRight: "16px" }}>650 ₽</div>
             </div>
             <div
               style={{
@@ -83,7 +78,7 @@ export const Checkout = () => {
               }}
             >
               <div>Доставка</div>
-              <div>0 ₽</div>
+              <div style={{ paddingRight: "16px" }}>0 ₽</div>
             </div>
           </div>
           <div
@@ -96,12 +91,12 @@ export const Checkout = () => {
           />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>Игото</div>
-            <div>123123 р</div>
+            <div style={{ paddingRight: "16px" }}>10000 ₽</div>
           </div>
         </div>
-      </div>
+      </ContentInner>
       <Footer>
-        <Button onClick={() => {}} text="Оформить заказ 1000р" />
+        <Button onClick={() => {}} text="Оформить заказ 10000р" />
       </Footer>
     </>
   );

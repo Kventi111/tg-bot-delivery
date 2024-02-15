@@ -1,12 +1,15 @@
 import * as RadixCheckbox from "@radix-ui/react-checkbox";
 import clsx from "classnames";
-// import { CheckIcon } from '@ewp/shared-app'
+
+import CheckIcon from "./check.svg?react";
+
 import styles from "./Checkbox.module.css";
 
 export const Checkbox = ({
   id,
   value,
   checked = false,
+  withLabel = true,
   onChecked,
   className,
 }) => {
@@ -23,11 +26,11 @@ export const Checkbox = ({
       >
         {checked && (
           <RadixCheckbox.Indicator className={styles.checkboxIndicator}>
-            {/* <CheckIcon className={styles.checkboxIcon} /> */}+
+            <CheckIcon className={styles.checkboxIcon} />
           </RadixCheckbox.Indicator>
         )}
       </RadixCheckbox.Root>
-      {value && (
+      {value && withLabel && (
         <label className={styles.label} htmlFor={id}>
           {value}
         </label>

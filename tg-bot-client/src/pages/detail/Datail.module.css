@@ -1,0 +1,29 @@
+.imgWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: var(--tg-theme-bg-color);
+  margin-bottom: 16px;
+}
+
+.wrapper {
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--tg-theme-text-color);
+}
+
+.options {
+  color: rgba(142, 142, 147, 1);
+  font-size: 14px;
+}
+
+.title {
+}

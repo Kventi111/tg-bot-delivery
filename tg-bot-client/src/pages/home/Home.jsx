@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useGesture } from "@use-gesture/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Chip } from "../../components/chip/Chip";
 import { Button } from "../../components/button/Button";
@@ -61,19 +62,94 @@ const categories = [
 ];
 
 export const Home = () => {
-  const { containerRef } = useSlider();
+  // const { containerRef } = useSlider();
   const navigate = useNavigate();
   const [currentCategory, setCurrentCategory] = useState(null);
+  const wheelOffset = useRef(0);
+  const dragOffset = useRef(0);
+  const target = useRef();
+
+  console.log({ wheelOffset, dragOffset });
+
+  useGesture(
+    {
+      onDrag: ({ event, offset: [x], direction: [dx] }) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (target.current.contains(event.target)) {
+          if (dx) {
+            console.log(x, dx);
+
+            dragOffset.current = -x;
+            target.current.scrollLeft -= dx * 12;
+            // target.current.scrollLeft -= dx * 20;
+            // runSprings(wheelOffset.current + -x, -dx)
+          }
+        }
+      },
+      onWheel: ({ event, offset: [x], direction: [dx] }) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (target.current.contains(event.target)) {
+          if (dx) {
+            wheelOffset.current = x;
+
+            target.current.scrollLeft += dx * 12;
+            // runSprings(dragOffset.current + y, dy)
+          }
+        }
+      },
+    },
+    {
+      target,
+      wheel: { eventOptions: { passive: false } },
+      drag: { eventOptions: { passive: false } },
+    }
+  );
+
+  useEffect(() => {
+    const handleDocumentWheel = (event) => {
+      // Если курсор мыши находится над контейнером слайдера,
+      // предотвращаем дальнейшее всплытие события
+      if (target.current.contains(event.target)) {
+        event.preventDefault();
+
+        target.current.scrollLeft += event.deltaY;
+      }
+    };
+
+    const handleDocumentTouchMove = (event) => {
+      // Если курсор мыши находится над контейнером слайдера,
+      // предотвращаем дальнейшее всплытие события
+      if (target.current.contains(event.target)) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("wheel", handleDocumentWheel, { passive: false });
+    document.addEventListener("touchmove", handleDocumentTouchMove, {
+      passive: false,
+    });
+
+    return () => {
+      document.removeEventListener("wheel", handleDocumentWheel);
+      document.removeEventListener("touchmove", handleDocumentTouchMove);
+    };
+  }, []);
 
   return (
     <>
-      <div ref={containerRef} className={styles.categories}>
+      {/* <div ref={containerRef} className={styles.categories}> */}
+      <div ref={target} className={styles.categories}>
         <Chip
           items={categories}
           currentCategoryId={currentCategory?.id}
           onSelect={setCurrentCategory}
         />
       </div>
+      {/* </div> */}
       <ContentInner>
         <div className={styles.productItems}>
           <Link to="/1">

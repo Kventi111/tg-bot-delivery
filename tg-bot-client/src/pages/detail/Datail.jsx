@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Button } from "../components/button/Button";
-import { Counter } from "../components/counter/Counter";
-import { Select } from "../components/select/Select";
-import { CheckboxGroup } from "../components/checkboxGroup/CheckboxGroup";
+import { Button } from "../../components/button/Button";
+import { Counter } from "../../components/counter/Counter";
+import { Select } from "../../components/select/Select";
+import { CheckboxGroup } from "../../components/checkboxGroup/CheckboxGroup";
+import { Footer } from "../../components/layout/Footer";
+import { ContentInner } from "../../components/layout/ContentInner";
+
+import styles from "./Datail.module.css";
 
 const tg = window.Telegram.WebApp;
 
@@ -14,18 +18,13 @@ tg.BackButton.onClick(() => {
   history.back();
 });
 
-const Footer = ({ children }) => <div className="footer">{children}</div>;
-
 export const Detail = () => {
   tg.BackButton.show();
   const [option, setOption] = useState(null);
 
   return (
     <>
-      <div
-        className="contentWrapper"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div className={styles.imgWrapper}>
         <img
           style={{
             width: "190px",
@@ -35,18 +34,12 @@ export const Detail = () => {
           alt=""
         />
       </div>
-      <div style={{ padding: "0 16px" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginBottom: "20px",
-          }}
-        >
-          <span style={{ fontSize: "20px" }}>
+      <ContentInner>
+        <div className={styles.description}>
+          <span className={styles.name}>
             Бургер из чего‑то там с чем‑то вкусным 490 г
           </span>
-          <span style={{ fontSize: "16px", color: "#8E8E93" }}>
+          <span className={styles.options}>
             200 gr chicken + cheese Lettuce + tomato
           </span>
         </div>
@@ -83,7 +76,7 @@ export const Detail = () => {
             onChange={() => {}}
           />
         </div>
-      </div>
+      </ContentInner>
       <Footer>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <Counter initialCount={2} />

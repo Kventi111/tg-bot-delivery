@@ -53,21 +53,21 @@ export const OrderDetails = () => {
         <div className={styles.form}>
           <div className={styles.field}>
             <Input
-              label="test"
+              label="Номер телефона"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <div className={styles.field}>
             <Input
-              label="test"
+              label="Адрес доставки"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
           <div className={styles.field}>
             <Input
-              label="test"
+              label="Комментарий"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />

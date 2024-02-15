@@ -21,12 +21,25 @@ export const Cart = () => {
   return (
     <>
       <ContentInner>
+        <div className={styles.title}>Заказ</div>
         <div className={styles.root}>
           <CartItem
             imgUrl={"/assets/burger.png"}
             name={"Бургер из чего‑то там с чем‑то вкусным"}
             desc={"medium"}
             price={666}
+          />
+          <CartItem
+            imgUrl={"/assets/burger.png"}
+            name={"Бургер из чего‑то там с чем‑то вкусным"}
+            desc={"medium"}
+            price={666}
+          />
+          <CartItem
+            imgUrl={"/assets/burger.png"}
+            name={"Бургер из чего‑то там с чем‑то вкусным"}
+            desc={"medium"}
+            price={777}
           />
         </div>
       </ContentInner>

@@ -22,8 +22,9 @@ export const Radio = ({ onSelect, selected = "", items }) => (
           value={value}
           id={value}
         >
-          {/* <RadioGroup.Indicator className={styles.radioGroupIndicator} /> */}
-          <CheckIcon />
+          <RadioGroup.Indicator>
+            <CheckIcon />
+          </RadioGroup.Indicator>
         </RadioGroup.Item>
       </button>
     ))}

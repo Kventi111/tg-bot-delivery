@@ -9,6 +9,14 @@ export const Counter = ({ initialCount = 0 }) => {
 
   return (
     <div className={styles.root}>
+      {count > 0 && (
+        <Button
+          className={styles.counterButton}
+          onClick={() => setCount((prevCount) => prevCount - 1)}
+          text="-"
+        />
+      )}
+      {count > 0 && <span className={styles.count}>{count}</span>}
       {count >= 0 && (
         <Button
           className={cls(styles.counterButton, {
@@ -16,14 +24,6 @@ export const Counter = ({ initialCount = 0 }) => {
           })}
           onClick={() => setCount((prevCount) => prevCount + 1)}
           text="+"
-        />
-      )}
-      {count > 0 && <span className={styles.count}>{count}</span>}
-      {count > 0 && (
-        <Button
-          className={styles.counterButton}
-          onClick={() => setCount((prevCount) => prevCount - 1)}
-          text="-"
         />
       )}
     </div>

@@ -3,81 +3,81 @@
 }
 
 .selectTrigger {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px;
-    width: calc(100% - 16px * 2);
-    border-radius: 8px;
-    background-color:  var(--tg-theme-bg-color);
-    color:  var(--tg-theme-text-color);
-    fill: var(--tg-theme-text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  width: calc(100% - 16px * 2);
+  border-radius: 8px;
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  fill: var(--tg-theme-text-color);
 
-    &:not(.error):hover {
-        outline: 1px solid blue;
-    }
+  &:not(.error):hover {
+    outline: 1px solid blue;
+  }
 
-    &.error {
-        border-color: red;
-    }
+  &.error {
+    border-color: red;
+  }
 }
 
 .selectTrigger[data-placeholder] {
-    color: rgba(255, 255, 255, 0.5);
+  color: var(--tg-theme-text-color);
 }
 
 .selectIcon {
-    color: white;
+  color: var(--tg-theme-text-color);
 }
 
 .selectContent {
-    width: var(--radix-select-trigger-width);
-    overflow: hidden;
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 8px;
+  width: var(--radix-select-trigger-width);
+  overflow: hidden;
+  background-color: var(--tg-theme-bg-color);
+  border-radius: 8px;
 }
 
 .selectViewport {
-    padding: 8px;
+  padding: 8px;
 }
 
 .selectItem {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  color: var(--tg-theme-text-color);
+  padding: 8px 12px;
+  border-radius: 4px;
+  position: relative;
+  user-select: none;
+
+  &[data-disabled] {
     color: var(--tg-theme-text-color);
-    padding: 8px 12px;
-    border-radius: 4px;
-    position: relative;
-    user-select: none;
+    pointer-events: none;
+  }
 
-    &[data-disabled] {
-        color: var(--tg-theme-text-color);
-        pointer-events: none;
-    }
+  &[data-highlighted] {
+    outline: none;
+    background-color: var(--tg-theme-secondary-bg-color);
+    cursor: pointer;
+    color: var(--tg-theme-text-color);
+  }
 
-    &[data-highlighted] {
-        outline: none;
-        background-color: white;
-        cursor: pointer;
-        color: black;
-    }
-
-    &:hover {
-        outline: none;
-        background-color: white;
-        cursor: pointer;
-        color: black;
-    }
+  &:hover {
+    outline: none;
+    background-color: var(--tg-theme-secondary-bg-color);
+    cursor: pointer;
+    color: var(--tg-theme-text-color);
+  }
 }
 
 .helperText {
-    display: inline-block;
-    padding-top: 2px;
-    font-size: 12px;
+  display: inline-block;
+  padding-top: 2px;
+  font-size: 12px;
 
-    &.error {
-        color: red;
-    }
+  &.error {
+    color: red;
+  }
 }

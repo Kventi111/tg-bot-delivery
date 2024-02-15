@@ -1,9 +1,0 @@
-{
-    "name": "tg-bot-shop",
-    "builds": [
-      {
-        "src": "./tg-bot-client/src/main.jsx",
-        "use": "@vercel/static-build"
-      }
-    ]
-  }

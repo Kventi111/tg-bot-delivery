@@ -1,7 +1,9 @@
 import * as RadixSelect from "@radix-ui/react-select";
 import clx from "classnames";
-import styles from "./Select.module.css";
 import { SelectItem } from "./SelectItem";
+import ChevronIcon from "./chevron.svg?react";
+
+import styles from "./Select.module.css";
 
 export const Select = ({
   placeholder,
@@ -19,7 +21,9 @@ export const Select = ({
         })}
       >
         <RadixSelect.Value placeholder={placeholder} />
-        <RadixSelect.Icon className={styles.selectIcon}>+</RadixSelect.Icon>
+        <RadixSelect.Icon className={styles.selectIcon}>
+          <ChevronIcon />
+        </RadixSelect.Icon>
       </RadixSelect.Trigger>
       {withHelper && (
         <span

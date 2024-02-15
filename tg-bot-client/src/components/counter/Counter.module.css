@@ -1,25 +1,25 @@
 .root {
-    display: flex;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
 
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 .count {
-    font-weight: 600;
-    padding: 0 12px;
+  font-weight: 600;
+  padding: 0 12px;
 }
 
 .counterButton {
-    font-weight: 600 !important;
-    max-width: 36px !important;
-    background-color: #0000001F;
-    padding: 5px 8px !important;
-    color: black;
-    border-radius: 10px !important;
+  font-weight: 600 !important;
+  max-width: 36px !important;
+  background-color: var(--tg-theme-button-color);
+  padding: 5px 8px !important;
+  color: var(--tg-theme-button-text-color);
+  border-radius: 10px !important;
 
-    &.fulled {
-        max-width: 100% !important;
-    }
+  &.fulled {
+    max-width: 100% !important;
+  }
 }

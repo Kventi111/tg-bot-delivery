@@ -14,7 +14,7 @@
                                 supported by Chrome, Edge, Opera and Firefox */
 
   &.active {
-    background-color: white;
-    color: black;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
   }
 }
