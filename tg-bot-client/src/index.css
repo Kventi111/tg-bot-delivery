@@ -1,4 +1,10 @@
 :root {
+  --tg-theme-bg-color: #18222d;
+  --tg-theme-accent-text-color: #2ea6ff;
+  --tg-theme-secondary-bg-color: #131415;
+  --tg-theme-text-color: #ffffff;
+  --tg-theme-button-color: #2ea6ff;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
