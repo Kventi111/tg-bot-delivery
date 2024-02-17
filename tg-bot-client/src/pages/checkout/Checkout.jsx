@@ -2,6 +2,7 @@
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
+import { useOrderStore } from "../../store/order";
 
 import styles from "./Checkout.module.css";
 
@@ -14,6 +15,7 @@ tg.BackButton.onClick(() => {
 
 export const Checkout = () => {
   //   const navigate = useNavigate();
+  const { list, commonPrice } = useOrderStore();
   tg.BackButton.show();
 
   return (
@@ -30,17 +32,21 @@ export const Checkout = () => {
             }}
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                color: "#8E8E93",
-              }}
-            >
-              <div>Пепперони х1</div>
-              <div style={{ paddingRight: "16px" }}>1 650 ₽</div>
-            </div>
-            <div
+            {list.map((i) => (
+              <div
+                key={i.id}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  color: "#8E8E93",
+                }}
+              >
+                <div>{`${i.name} X${i.count}`}</div>
+                <div style={{ paddingRight: "16px" }}>{i.price} ₽</div>
+              </div>
+            ))}
+
+            {/* <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -69,7 +75,7 @@ export const Checkout = () => {
             >
               <div>Пепперони х1</div>
               <div style={{ paddingRight: "16px" }}>650 ₽</div>
-            </div>
+            </div> */}
             <div
               style={{
                 display: "flex",
@@ -91,7 +97,7 @@ export const Checkout = () => {
           />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>Игото</div>
-            <div style={{ paddingRight: "16px" }}>10000 ₽</div>
+            <div style={{ paddingRight: "16px" }}>{commonPrice} ₽</div>
           </div>
         </div>
       </ContentInner>

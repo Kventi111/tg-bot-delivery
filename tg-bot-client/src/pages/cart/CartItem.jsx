@@ -2,7 +2,14 @@ import { Counter } from "../../components/counter/Counter";
 
 import styles from "./Cart.module.css";
 
-export const CartItem = ({ imgUrl, name, desc, price }) => (
+export const CartItem = ({
+  imgUrl,
+  name,
+  desc,
+  price,
+  count,
+  onCounterChange,
+}) => (
   <div className={styles.cartItem}>
     <div
       style={{
@@ -29,7 +36,7 @@ export const CartItem = ({ imgUrl, name, desc, price }) => (
       <span style={{ fontSize: "14px", fontWeight: "600" }}>{price}</span>
     </div>
     <div style={{ width: "100%" }}>
-      <Counter initialCount={2} />
+      <Counter initialCount={count} onChange={onCounterChange} />
     </div>
   </div>
 );

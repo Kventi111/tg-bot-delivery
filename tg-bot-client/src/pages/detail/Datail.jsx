@@ -1,17 +1,16 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Counter } from "../../components/counter/Counter";
 import { Select } from "../../components/select/Select";
 import { CheckboxGroup } from "../../components/checkboxGroup/CheckboxGroup";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
+import { useOrderStore } from "../../store/order";
 
 import styles from "./Datail.module.css";
 
 const tg = window.Telegram.WebApp;
-
-// tg.MainButton.show();
-// tg.SettingsButton.show();
 
 tg.BackButton.onClick(() => {
   tg.BackButton.hide();
@@ -19,8 +18,13 @@ tg.BackButton.onClick(() => {
 });
 
 export const Detail = () => {
+  const { id } = useParams();
+  const { list, setCount } = useOrderStore();
   tg.BackButton.show();
   const [option, setOption] = useState(null);
+  const detailItem = list.find((i) => i.id == id);
+
+  console.log({ id, detailItem, list });
 
   return (
     <>
@@ -36,9 +40,7 @@ export const Detail = () => {
       </div>
       <ContentInner>
         <div className={styles.description}>
-          <span className={styles.name}>
-            Бургер из чего‑то там с чем‑то вкусным 490 г
-          </span>
+          <span className={styles.name}>{detailItem.name}</span>
           <span className={styles.options}>
             200 gr chicken + cheese Lettuce + tomato
           </span>
@@ -79,8 +81,16 @@ export const Detail = () => {
       </ContentInner>
       <Footer>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Counter initialCount={2} />
-          <Button onClick={() => {}} text="Добавить 650 ₽" />
+          <Counter
+            initialCount={detailItem.count}
+            onChange={(count) => {
+              setCount(detailItem.id, count);
+            }}
+          />
+          <Button
+            onClick={() => {}}
+            text={`Добавить ${detailItem.count * detailItem.price}  ₽`}
+          />
         </div>
       </Footer>
     </>

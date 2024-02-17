@@ -2,7 +2,7 @@ const TelegramBot = require("node-telegram-bot-api");
 
 const token = "6867528882:AAGsOveZBps2gwx17vgnF1YdY31UyEewAjU";
 const bot = new TelegramBot(token, { polling: true });
-const WEB_URL = "https://2554-178-33-155-18.ngrok-free.app";
+const WEB_URL = "https://tg-bot.dev:5173/";
 
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
