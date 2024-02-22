@@ -6,7 +6,7 @@ import { Button } from "../../components/button/Button";
 import { ContentInner } from "../../components/layout/ContentInner";
 import { Footer } from "../../components/layout/Footer";
 import { Card } from "../../components/card/Card";
-import { fakeItems } from "../../store/products";
+import { fakeProducts } from "../../store/fakeData";
 import { useOrderStore } from "../../store/order";
 
 import styles from "./Home.module.css";
@@ -17,13 +17,15 @@ export const Home = () => {
   const wheelOffset = useRef(0);
   const dragOffset = useRef(0);
   const target = useRef();
-  const { list, filteredList, categories, setProducts, setFilter, setCount } =
-    useOrderStore();
-
-  const { items, commonPrice } = useOrderStore();
-
-  console.log({ list, categories, filteredList });
-  console.log({ items, commonPrice });
+  const {
+    products,
+    filteredList,
+    categories,
+    setProducts,
+    setFilter,
+    setCount,
+    totalPrice,
+  } = useOrderStore();
 
   const categoriesOptions = categories.map((i, index) => ({
     id: index,
@@ -31,7 +33,7 @@ export const Home = () => {
   }));
 
   useEffect(() => {
-    setTimeout(() => setProducts(fakeItems), 3000);
+    setTimeout(() => setProducts(fakeProducts), 3000);
   }, []);
 
   useGesture(
@@ -127,17 +129,16 @@ export const Home = () => {
       <ContentInner>
         <div className={styles.productItems}>
           {!filteredList &&
-            list.map((item, index) => (
+            products.map((item) => (
               <Card
                 key={item.id}
-                imgUrl={"assets/burger.png"}
+                imgUrl={item.imgUrl}
                 name={item.name}
                 price={item.price}
                 options={item.weight_g}
                 count={item.count}
                 onClick={() => navigate(`/${item.id}`)}
                 onCounterChange={(count) => {
-                  console.log({ count });
                   setCount(item.id, count);
                 }}
               />
@@ -146,20 +147,23 @@ export const Home = () => {
             filteredList.map((item, index) => (
               <Card
                 key={index}
-                imgUrl={"assets/burger.png"}
+                imgUrl={item.imgUrl}
                 name={item.name}
                 price={item.price}
                 options={item.weight_g}
-                count={0}
+                onClick={() => navigate(`/${item.id}`)}
+                count={item.count}
+                onCounterChange={(count) => {
+                  setCount(item.id, count);
+                }}
               />
             ))}
         </div>
       </ContentInner>
       <Footer>
-        <Button
-          onClick={() => navigate("/cart")}
-          text={`Корзина ${commonPrice} ₽`}
-        />
+        <Button onClick={() => navigate("/cart")}>
+          Корзина {totalPrice} ₽
+        </Button>
       </Footer>
     </>
   );

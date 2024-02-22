@@ -8,21 +8,15 @@ export const Counter = ({ initialCount = 0, onChange }) => {
   let [count, setCount] = useState(initialCount);
 
   const onIncreaseCount = () => {
-    // e.preventDefault();
-    // e.stopProparation();
-
     setCount((prevCount) => prevCount + 1);
   };
 
   const onDecreaseCount = () => {
-    // e.preventDefault();
-    // e.stopProparation();
-
     setCount((prevCount) => prevCount - 1);
   };
 
   useEffect(() => {
-    if (count > 0) {
+    if (count !== 0) {
       onChange?.(count);
     }
   }, [count]);
@@ -36,8 +30,9 @@ export const Counter = ({ initialCount = 0, onChange }) => {
             e.stopPropagation();
             onDecreaseCount();
           }}
-          text="-"
-        />
+        >
+          -
+        </Button>
       )}
       {count > 0 && <span className={styles.count}>{count}</span>}
       {count >= 0 && (
@@ -46,13 +41,12 @@ export const Counter = ({ initialCount = 0, onChange }) => {
             [styles.fulled]: count === 0,
           })}
           onClick={(e) => {
-            console.log({ e });
             e.stopPropagation();
-
             onIncreaseCount();
           }}
-          text="+"
-        />
+        >
+          +
+        </Button>
       )}
     </div>
   );

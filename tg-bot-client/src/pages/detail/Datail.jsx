@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Counter } from "../../components/counter/Counter";
@@ -19,12 +18,9 @@ tg.BackButton.onClick(() => {
 
 export const Detail = () => {
   const { id } = useParams();
-  const { list, setCount } = useOrderStore();
+  const { products, setCount } = useOrderStore();
   tg.BackButton.show();
-  const [option, setOption] = useState(null);
-  const detailItem = list.find((i) => i.id == id);
-
-  console.log({ id, detailItem, list });
+  const detailItem = products.find((i) => i.id == id);
 
   return (
     <>
@@ -34,7 +30,7 @@ export const Detail = () => {
             width: "190px",
             height: "auto",
           }}
-          src="/assets/burger.png"
+          src={detailItem.imgUrl}
           alt=""
         />
       </div>
@@ -87,10 +83,9 @@ export const Detail = () => {
               setCount(detailItem.id, count);
             }}
           />
-          <Button
-            onClick={() => {}}
-            text={`Добавить ${detailItem.count * detailItem.price}  ₽`}
-          />
+          <Button onClick={() => {}}>
+            Добавить {detailItem.count * detailItem.price} ₽
+          </Button>
         </div>
       </Footer>
     </>

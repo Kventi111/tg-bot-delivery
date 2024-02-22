@@ -17,7 +17,7 @@ tg.BackButton.onClick(() => {
 
 export const Cart = () => {
   const navigate = useNavigate();
-  const { items, commonPrice, setCount } = useOrderStore();
+  const { lineItems, totalPrice, setCount } = useOrderStore();
   tg.BackButton.show();
 
   return (
@@ -25,7 +25,7 @@ export const Cart = () => {
       <ContentInner>
         <div className={styles.title}>Заказ</div>
         <div className={styles.root}>
-          {Object.values(items).map((item) => (
+          {Object.values(lineItems).map((item) => (
             <CartItem
               key={item.id}
               imgUrl={"/assets/burger.png"}
@@ -39,26 +39,12 @@ export const Cart = () => {
               }}
             />
           ))}
-
-          {/* <CartItem
-            imgUrl={"/assets/burger.png"}
-            name={"Бургер из чего‑то там с чем‑то вкусным"}
-            desc={"medium"}
-            price={666}
-          />
-          <CartItem
-            imgUrl={"/assets/burger.png"}
-            name={"Бургер из чего‑то там с чем‑то вкусным"}
-            desc={"medium"}
-            price={777}
-          /> */}
         </div>
       </ContentInner>
       <Footer>
-        <Button
-          onClick={() => navigate("/orderDetails")}
-          text={`Оформить заказ ${commonPrice} ₽`}
-        />
+        <Button onClick={() => navigate("/orderDetails")}>
+          Оформить заказ {totalPrice} ₽
+        </Button>
       </Footer>
     </>
   );

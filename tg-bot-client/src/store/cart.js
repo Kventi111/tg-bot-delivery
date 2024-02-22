@@ -1,17 +1,11 @@
-import { create } from "zustand";
-
 export const createCartSlice = (set) => ({
-  items: {},
-  commonPrice: 0,
+  lineItems: {},
+  totalPrice: 0,
   addToCart: (item) =>
-    set((state) => {
-      console.log({ state });
-
-      return {
-        items: { ...state.items, [item.id]: { ...item } },
-        commonPrice: Object.values(state.items).reduce((acc, curr) => {
-          return (acc += curr.price * curr.count);
-        }, 0),
-      };
-    }),
+    set((state) => ({
+      lineItems: { ...state.lineItems, [item.id]: { ...item } },
+      totalPrice: Object.values(state.lineItems).reduce((acc, curr) => {
+        return (acc += curr.price * curr.count);
+      }, 0),
+    })),
 });

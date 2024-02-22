@@ -14,8 +14,7 @@ tg.BackButton.onClick(() => {
 });
 
 export const Checkout = () => {
-  //   const navigate = useNavigate();
-  const { list, commonPrice } = useOrderStore();
+  const { lineItems, totalPrice } = useOrderStore();
   tg.BackButton.show();
 
   return (
@@ -32,7 +31,7 @@ export const Checkout = () => {
             }}
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {list.map((i) => (
+            {Object.values(lineItems).map((i) => (
               <div
                 key={i.id}
                 style={{
@@ -45,37 +44,6 @@ export const Checkout = () => {
                 <div style={{ paddingRight: "16px" }}>{i.price} ₽</div>
               </div>
             ))}
-
-            {/* <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                color: "#8E8E93",
-              }}
-            >
-              <div>Пепперони х1</div>
-              <div style={{ paddingRight: "16px" }}>1 650 ₽</div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                color: "#8E8E93",
-              }}
-            >
-              <div>Пепперони х1</div>
-              <div style={{ paddingRight: "16px" }}>1 650 ₽</div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                color: "#8E8E93",
-              }}
-            >
-              <div>Пепперони х1</div>
-              <div style={{ paddingRight: "16px" }}>650 ₽</div>
-            </div> */}
             <div
               style={{
                 display: "flex",
@@ -97,12 +65,12 @@ export const Checkout = () => {
           />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div>Игото</div>
-            <div style={{ paddingRight: "16px" }}>{commonPrice} ₽</div>
+            <div style={{ paddingRight: "16px" }}>{totalPrice} ₽</div>
           </div>
         </div>
       </ContentInner>
       <Footer>
-        <Button onClick={() => {}} text="Оформить заказ 10000р" />
+        <Button onClick={() => {}}>Оформить заказ {totalPrice} ₽</Button>
       </Footer>
     </>
   );
