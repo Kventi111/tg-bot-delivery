@@ -37,7 +37,7 @@ export const Detail = () => {
   }, []);
 
   const onAdd = () => {
-    setProductCount(id, count);
+    setProductCount(id, count, "detail");
     navigate("/");
   };
 

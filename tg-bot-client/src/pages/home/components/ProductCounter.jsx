@@ -14,7 +14,7 @@ export const ProductCounter = ({ id, productCount = 0 }) => {
       e.stopPropagation();
 
       setCount((prevCount) => prevCount + 1);
-      setProductCount(id, count + 1);
+      setProductCount(id, count + 1, "home");
     },
     [count, id, setProductCount]
   );
@@ -25,7 +25,7 @@ export const ProductCounter = ({ id, productCount = 0 }) => {
       e.stopPropagation();
 
       setCount((prevCount) => prevCount - 1);
-      setProductCount(id, count - 1);
+      setProductCount(id, count - 1, "home");
     },
     [count, id, setProductCount]
   );

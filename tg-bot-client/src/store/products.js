@@ -23,15 +23,14 @@ export const useProductsStore = create((set) => ({
         filteredList: category !== "Все" ? f : state.products,
       };
     }),
-  setCount: (id, count) =>
+  setCount: (id, count, from = "home") =>
     set((state) => {
       const p = state.products;
       const currentProduct = p[id];
 
       p[id] = {
         ...currentProduct,
-        count:
-          currentProduct.count === 0 ? count : currentProduct.count + count,
+        count: from === "home" ? count : currentProduct.count + count,
       };
 
       if (count === 0) {
