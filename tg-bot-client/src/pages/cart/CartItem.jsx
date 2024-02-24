@@ -1,31 +1,24 @@
+import PropTypes from "prop-types";
 import styles from "./Cart.module.css";
 
 export const CartItem = ({ imgUrl, name, desc, price, children }) => (
   <div className={styles.cartItem}>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img src={imgUrl} alt="" width={"50px"} height={"auto"} />
+    <div className={styles.cartItemImgWrapper}>
+      <img src={imgUrl} alt="" />
     </div>
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <span
-        style={{
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          width: "150px",
-          textOverflow: "ellipsis",
-          fontSize: "12px",
-        }}
-      >
-        {name}
-      </span>
-      <span style={{ fontSize: "12px", color: "#8E8E93" }}>{desc}</span>
-      <span style={{ fontSize: "14px", fontWeight: "600" }}>{price}</span>
+    <div className={styles.cartItemInfo}>
+      <span className={styles.cartItemName}>{name}</span>
+      <span className={styles.cartItemDesc}>{desc}</span>
+      <span className={styles.cartItemPrice}>{price}</span>
     </div>
-    <div style={{ width: "100%" }}>{children}</div>
+    <div>{children}</div>
   </div>
 );
+
+CartItem.propTypes = {
+  imgUrl: PropTypes.string,
+  name: PropTypes.string,
+  desc: PropTypes.string,
+  price: PropTypes.number,
+  children: PropTypes.node,
+};

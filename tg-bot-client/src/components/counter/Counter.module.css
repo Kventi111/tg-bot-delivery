@@ -1,25 +1,22 @@
 .root {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
-
-  justify-content: space-around;
 }
 
 .count {
+  min-width: 50px;
   font-weight: 600;
   padding: 0 12px;
+  text-align: center;
 }
 
 .counterButton {
-  font-weight: 600 !important;
-  max-width: 36px !important;
-  background-color: var(--tg-theme-button-color);
-  padding: 5px 8px !important;
-  color: var(--tg-theme-button-text-color);
-  border-radius: 10px !important;
+  box-sizing: border-box;
+  width: 36px;
 
   &.fulled {
-    max-width: 100% !important;
+    width: 100%;
   }
 }

@@ -22,55 +22,31 @@ export const Checkout = () => {
       <ContentInner>
         <div className={styles.root}>
           Оплата заказа
-          <div
-            style={{
-              backgroundColor: "black",
-              width: "100%",
-              height: "1px",
-              margin: "12px 0",
-            }}
-          />
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div className={styles.separator} />
+          <div className={styles.list}>
             {Object.values(lineItems).map((i) => (
-              <div
-                key={i.id}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  color: "#8E8E93",
-                }}
-              >
-                <div>{`${i.name} X${i.count}`}</div>
-                <div style={{ paddingRight: "16px" }}>{i.price} ₽</div>
+              <div key={i.id} className={styles.item}>
+                <div className={styles.name}>{i.name}</div>
+                <span className={styles.count}>{`X${i.count}`}</span>
+                <div className={styles.price}>{i.price} ₽</div>
               </div>
             ))}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                color: "#8E8E93",
-              }}
-            >
+            <div className={styles.item}>
               <div>Доставка</div>
-              <div style={{ paddingRight: "16px" }}>0 ₽</div>
+              <div className={styles.price}>0 ₽</div>
             </div>
           </div>
-          <div
-            style={{
-              backgroundColor: "black",
-              width: "100%",
-              height: "1px",
-              margin: "12px 0",
-            }}
-          />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div className={styles.separator} />
+          <div className={styles.total}>
             <div>Игото</div>
-            <div style={{ paddingRight: "16px" }}>{totalPrice} ₽</div>
+            <div className={styles.price}>{totalPrice} ₽</div>
           </div>
         </div>
       </ContentInner>
       <Footer>
-        <Button onClick={() => {}}>Оформить заказ {totalPrice} ₽</Button>
+        <Button size="lg" onClick={() => {}}>
+          Оформить заказ {totalPrice} ₽
+        </Button>
       </Footer>
     </>
   );

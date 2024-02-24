@@ -26,10 +26,12 @@ export const useProductsStore = create((set) => ({
   setCount: (id, count) =>
     set((state) => {
       const p = state.products;
+      const currentProduct = p[id];
 
       p[id] = {
-        ...p[id],
-        count,
+        ...currentProduct,
+        count:
+          currentProduct.count === 0 ? count : currentProduct.count + count,
       };
 
       if (count === 0) {

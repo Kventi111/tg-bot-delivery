@@ -3,7 +3,7 @@ export const fakeProducts = [
     id: 0,
     count: 0,
     category: "Пицца",
-    name: "Вегетарианская",
+    name: "Вегетарианская c очень длинным названием",
     description: "Пицца с миксом овощей и сыром.",
     imgUrl: "assets/pizza-vegetation.png",
     price: 600,

@@ -7,6 +7,8 @@ export const TotalPrice = () => {
   const totalPrice = useCartStore((state) => state.totalPrice);
 
   return (
-    <Button onClick={() => navigate("/cart")}>Корзина {totalPrice} ₽</Button>
+    <Button size="lg" onClick={() => navigate("/cart")}>
+      Корзина {totalPrice} ₽
+    </Button>
   );
 };

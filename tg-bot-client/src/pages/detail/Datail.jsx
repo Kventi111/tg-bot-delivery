@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import { Button } from "../../components/button/Button";
-import { Counter } from "../../components/counter/Counter";
 import { Select } from "../../components/select/Select";
 import { CheckboxGroup } from "../../components/checkboxGroup/CheckboxGroup";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
+import { Counter } from "../../components/counter/Counter";
+
 import { useProductsStore } from "../../store/products";
 
 import styles from "./Datail.module.css";
@@ -18,21 +21,30 @@ tg.BackButton.onClick(() => {
 
 export const Detail = () => {
   const { id } = useParams();
-  const { products, setCount } = useProductsStore();
+  const navigate = useNavigate();
+  const { products, setCount: setProductCount } = useProductsStore();
+  let [count, setCount] = useState(1);
+
   const detailItem = products[id];
   tg.BackButton.show();
+
+  const onIncreaseCount = useCallback(() => {
+    setCount((prevCount) => prevCount + 1);
+  }, []);
+
+  const onDecreaseCount = useCallback(() => {
+    setCount((prevCount) => prevCount - 1);
+  }, []);
+
+  const onAdd = () => {
+    setProductCount(id, count);
+    navigate("/");
+  };
 
   return (
     <>
       <div className={styles.imgWrapper}>
-        <img
-          style={{
-            width: "190px",
-            height: "auto",
-          }}
-          src={detailItem?.imgUrl}
-          alt=""
-        />
+        <img src={detailItem?.imgUrl} alt="" />
       </div>
       <ContentInner>
         <div className={styles.description}>
@@ -42,11 +54,7 @@ export const Detail = () => {
           </span>
         </div>
         <div style={{ marginBottom: "24px" }}>
-          <div
-            style={{ color: "#8E8E93", fontSize: "12px", marginBottom: "8px" }}
-          >
-            Прожарка
-          </div>
+          <div className={styles.title}>Прожарка</div>
           <Select
             items={[
               { id: "1", value: "Не жарить" },
@@ -58,12 +66,8 @@ export const Detail = () => {
             ]}
           />
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{ color: "#8E8E93", fontSize: "12px", marginBottom: "8px" }}
-          >
-            Дополнительно
-          </div>
+        <div className={styles.options}>
+          <div className={styles.title}>Дополнительно</div>
 
           <CheckboxGroup
             items={[
@@ -76,15 +80,14 @@ export const Detail = () => {
         </div>
       </ContentInner>
       <Footer>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <div className={styles.actions}>
           <Counter
-            initialCount={detailItem.count}
-            onChange={(count) => {
-              setCount(detailItem.id, count);
-            }}
+            count={count}
+            onDecrease={onDecreaseCount}
+            onIncrease={onIncreaseCount}
           />
-          <Button onClick={() => {}}>
-            Добавить {detailItem.count * detailItem.price} ₽
+          <Button onClick={onAdd} size="md">
+            Добавить {count * detailItem.price} ₽
           </Button>
         </div>
       </Footer>

@@ -41,7 +41,7 @@ export const Cart = () => {
         </div>
       </ContentInner>
       <Footer>
-        <Button onClick={() => navigate("/orderDetails")}>
+        <Button size="lg" onClick={() => navigate("/orderDetails")}>
           Оформить заказ {totalPrice} ₽
         </Button>
       </Footer>

@@ -3,6 +3,11 @@
   justify-content: center;
   background-color: var(--tg-theme-bg-color);
   margin-bottom: 16px;
+
+  img {
+    width: 190px;
+    height: auto;
+  }
 }
 
 .wrapper {
@@ -26,4 +31,18 @@
 }
 
 .title {
+  color: #8e8e93;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

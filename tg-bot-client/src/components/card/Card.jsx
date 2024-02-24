@@ -1,6 +1,8 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
 
+import { Button } from "../button/Button";
+
 import styles from "./Card.module.css";
 
 export const Card = memo(function Card({
@@ -16,7 +18,7 @@ export const Card = memo(function Card({
         <img src={imgUrl} height={70} alt="" />
       </div>
       <div className={styles.description}>
-        <span className={styles.price}>{price} ₽</span>
+        {/* <span className={styles.price}>{price} ₽</span> */}
         <span className={styles.name}>{name}</span>
         <span className={styles.options}>{options}</span>
       </div>
@@ -28,6 +30,7 @@ export const Card = memo(function Card({
 Card.propTypes = {
   imgUrl: PropTypes.string,
   price: PropTypes.number,
+  count: PropTypes.number,
   name: PropTypes.string,
   options: PropTypes.number,
   children: PropTypes.node,

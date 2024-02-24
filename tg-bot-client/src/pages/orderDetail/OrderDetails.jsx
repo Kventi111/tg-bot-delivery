@@ -75,7 +75,9 @@ export const OrderDetails = () => {
         </div>
       </ContentInner>
       <Footer>
-        <Button onClick={() => navigate("/checkout")}>Продолжить</Button>
+        <Button size="lg" onClick={() => navigate("/checkout")}>
+          Продолжить
+        </Button>
       </Footer>
     </>
   );
