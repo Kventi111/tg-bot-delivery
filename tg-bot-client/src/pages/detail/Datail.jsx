@@ -5,7 +5,7 @@ import { Select } from "../../components/select/Select";
 import { CheckboxGroup } from "../../components/checkboxGroup/CheckboxGroup";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
-import { useOrderStore } from "../../store/order";
+import { useProductsStore } from "../../store/products";
 
 import styles from "./Datail.module.css";
 
@@ -18,9 +18,9 @@ tg.BackButton.onClick(() => {
 
 export const Detail = () => {
   const { id } = useParams();
-  const { products, setCount } = useOrderStore();
+  const { products, setCount } = useProductsStore();
+  const detailItem = products[id];
   tg.BackButton.show();
-  const detailItem = products.find((i) => i.id == id);
 
   return (
     <>
@@ -30,7 +30,7 @@ export const Detail = () => {
             width: "190px",
             height: "auto",
           }}
-          src={detailItem.imgUrl}
+          src={detailItem?.imgUrl}
           alt=""
         />
       </div>

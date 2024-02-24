@@ -1,36 +1,18 @@
-import { useState, useEffect } from "react";
+import { memo } from "react";
 import cls from "classnames";
 import { Button } from "../button/Button";
 
 import styles from "./Counter.module.css";
 
-export const Counter = ({ initialCount = 0, onChange }) => {
-  let [count, setCount] = useState(initialCount);
-
-  const onIncreaseCount = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  const onDecreaseCount = () => {
-    setCount((prevCount) => prevCount - 1);
-  };
-
-  useEffect(() => {
-    if (count !== 0) {
-      onChange?.(count);
-    }
-  }, [count]);
-
+export const Counter = memo(function Counter({
+  count = 0,
+  onIncrease,
+  onDecrease,
+}) {
   return (
     <div className={styles.root}>
       {count > 0 && (
-        <Button
-          className={styles.counterButton}
-          onClick={(e) => {
-            e.stopPropagation();
-            onDecreaseCount();
-          }}
-        >
+        <Button className={styles.counterButton} onClick={onDecrease}>
           -
         </Button>
       )}
@@ -40,14 +22,17 @@ export const Counter = ({ initialCount = 0, onChange }) => {
           className={cls(styles.counterButton, {
             [styles.fulled]: count === 0,
           })}
-          onClick={(e) => {
-            e.stopPropagation();
-            onIncreaseCount();
-          }}
+          onClick={onIncrease}
         >
           +
         </Button>
       )}
     </div>
   );
+});
+
+Counter.propTypes = {
+  count: Number,
+  onIncrease: () => {},
+  onDecrease: () => {},
 };

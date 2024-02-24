@@ -1,0 +1,20 @@
+.block {
+  margin: 16px 0 24px 0;
+}
+
+.title {
+  color: #8e8e93;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}

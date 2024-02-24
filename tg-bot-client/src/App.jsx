@@ -8,6 +8,7 @@ import { Detail } from "./pages/detail/Datail";
 import { Cart } from "./pages/cart/Cart";
 import { Checkout } from "./pages/checkout/Checkout";
 import { OrderDetails } from "./pages/orderDetail/OrderDetails";
+import { TestPage } from "./pages/testPage/TestPage";
 
 const tg = window.Telegram.WebApp;
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="orderDetails" element={<OrderDetails />} />
+        <Route path="test-page" element={<TestPage />} />
 
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Route>

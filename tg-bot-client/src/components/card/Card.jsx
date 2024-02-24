@@ -1,18 +1,17 @@
-import { Counter } from "../counter/Counter";
+import { memo } from "react";
+import PropTypes from "prop-types";
 
 import styles from "./Card.module.css";
 
-export const Card = ({
+export const Card = memo(function Card({
   imgUrl,
   price,
   name,
   options,
-  count,
-  onCounterChange,
-  onClick,
-}) => {
+  children,
+}) {
   return (
-    <div className={styles.root} onClick={onClick}>
+    <div className={styles.root}>
       <div className={styles.image}>
         <img src={imgUrl} height={70} alt="" />
       </div>
@@ -21,9 +20,15 @@ export const Card = ({
         <span className={styles.name}>{name}</span>
         <span className={styles.options}>{options}</span>
       </div>
-      <div className={styles.actions}>
-        <Counter initialCount={count} onChange={onCounterChange} />
-      </div>
+      <div className={styles.actions}>{children}</div>
     </div>
   );
+});
+
+Card.propTypes = {
+  imgUrl: PropTypes.string,
+  price: PropTypes.number,
+  name: PropTypes.string,
+  options: PropTypes.number,
+  children: PropTypes.node,
 };

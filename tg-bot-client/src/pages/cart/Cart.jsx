@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
-import { useOrderStore } from "../../store/order";
+import { useCartStore } from "../../store/cart";
+
+import { ProductCounter } from "../home/components/ProductCounter";
 
 import { CartItem } from "./CartItem";
 
@@ -17,7 +19,7 @@ tg.BackButton.onClick(() => {
 
 export const Cart = () => {
   const navigate = useNavigate();
-  const { lineItems, totalPrice, setCount } = useOrderStore();
+  const { lineItems, totalPrice } = useCartStore();
   tg.BackButton.show();
 
   return (
@@ -28,16 +30,13 @@ export const Cart = () => {
           {Object.values(lineItems).map((item) => (
             <CartItem
               key={item.id}
-              imgUrl={"/assets/burger.png"}
+              imgUrl={item.imgUrl}
               name={item.name}
               desc={"medium"}
               price={item.price}
-              count={item.count}
-              onCounterChange={(count) => {
-                console.log({ count });
-                setCount(item.id, count);
-              }}
-            />
+            >
+              <ProductCounter id={item.id} productCount={item.count} />
+            </CartItem>
           ))}
         </div>
       </ContentInner>

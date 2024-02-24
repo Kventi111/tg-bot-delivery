@@ -2,7 +2,7 @@
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
-import { useOrderStore } from "../../store/order";
+import { useCartStore } from "../../store/cart";
 
 import styles from "./Checkout.module.css";
 
@@ -14,7 +14,7 @@ tg.BackButton.onClick(() => {
 });
 
 export const Checkout = () => {
-  const { lineItems, totalPrice } = useOrderStore();
+  const { lineItems, totalPrice } = useCartStore();
   tg.BackButton.show();
 
   return (

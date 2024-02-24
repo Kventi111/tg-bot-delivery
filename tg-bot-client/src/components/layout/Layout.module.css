@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100svh;
+  height: 100vh;
 }
 
 .content {
@@ -11,13 +11,12 @@
 }
 
 .contentInner {
-  height: calc(100% - 60px);
-  padding: 0 16px;
+  padding: 0 16px 80px 16px;
   background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .footer {
-  position: sticky;
+  position: fixed;
   padding: 8px 16px;
   bottom: 0;
   width: 100%;

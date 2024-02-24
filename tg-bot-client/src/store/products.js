@@ -1,35 +1,47 @@
-export const createProductsSlice = (set, get) => ({
-  products: [],
+import { create } from "zustand";
+import { addToCard, calcTotalPrice, deleteFromCart } from "./cart";
+
+export const useProductsStore = create((set) => ({
+  products: new Map(),
   categories: [],
   setProducts: (list) =>
     set(() => ({
-      products: list,
+      products: list.reduce((acc, curr) => {
+        acc[curr.id] = { ...curr };
+
+        return acc;
+      }, {}),
       categories: [...new Set(list.map((i) => i.category))],
     })),
   setFilter: (category) =>
-    set((state) => ({
-      filteredList:
-        category !== "Все"
-          ? state.products.filter((i) => i.category === category)
-          : undefined,
-    })),
-  setCount: (id, count) =>
     set((state) => {
+      const f = Object.values(state.products).filter(
+        (i) => i.category === category
+      );
+
       return {
-        products: state.products.map((item) => {
-          if (item.id === id) {
-            const newItem = {
-              ...item,
-              count: count,
-            };
-
-            get().addToCart(newItem);
-
-            return newItem;
-          }
-
-          return item;
-        }),
+        filteredList: category !== "Все" ? f : state.products,
       };
     }),
-});
+  setCount: (id, count) =>
+    set((state) => {
+      const p = state.products;
+
+      p[id] = {
+        ...p[id],
+        count,
+      };
+
+      if (count === 0) {
+        deleteFromCart(id);
+        calcTotalPrice();
+      } else {
+        addToCard(p[id]);
+        calcTotalPrice();
+      }
+
+      return {
+        products: p,
+      };
+    }),
+}));
