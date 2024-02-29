@@ -3,10 +3,11 @@
 }
 
 .selectTrigger {
+  /* position: relative; */
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 20px 18px 9px 18px;
   width: calc(100% - 16px * 2);
   border-radius: 8px;
   background-color: var(--tg-theme-bg-color);
@@ -80,4 +81,22 @@
   &.error {
     color: red;
   }
+}
+
+.label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  transition: top 0.3s, font-size 0.3s, color 0.3s;
+}
+
+.selectTrigger:focus + label,
+.selectTrigger.focused + label {
+  top: 12px;
+  font-size: 12px;
+  color: #8e8e93;
 }

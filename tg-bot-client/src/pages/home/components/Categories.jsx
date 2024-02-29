@@ -6,16 +6,22 @@ import { useProductsStore } from "../../../store/products";
 import styles from "../Home.module.css";
 
 export const Categories = () => {
-  const [currentCategory, setCurrentCategory] = useState(null);
+  // const [currentCategory, setCurrentCategory] = useState(null);
   const wheelOffset = useRef(0);
   const dragOffset = useRef(0);
   const target = useRef();
 
   const categories = useProductsStore((state) => state.categories);
   const setFilter = useProductsStore((state) => state.setFilter);
+  const { currentCategory, setCurrentCategory } = useProductsStore((state) => ({
+    currentCategory: state.currentCategory,
+    setCurrentCategory: state.setCurrentCategory,
+  }));
+
+  console.log({ currentCategory });
 
   const categoriesOptions = categories.map((i, index) => ({
-    id: index,
+    id: index + 1,
     value: i,
   }));
 
@@ -81,21 +87,22 @@ export const Categories = () => {
   }, []);
 
   const onCategorySelected = (category) => {
+    setFilter();
     setCurrentCategory(category);
-    setFilter(category.value);
   };
 
   return (
     <div ref={target} className={styles.categories}>
       <Chip
+        isLoading={!categories?.length}
         items={[
           {
-            id: 111,
+            id: 0,
             value: "Все",
           },
           ...categoriesOptions,
         ]}
-        currentCategoryId={currentCategory?.id}
+        currentCategoryId={currentCategory}
         onSelect={onCategorySelected}
       />
     </div>

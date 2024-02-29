@@ -4,6 +4,8 @@ import { addToCard, calcTotalPrice, deleteFromCart } from "./cart";
 export const useProductsStore = create((set) => ({
   products: new Map(),
   categories: [],
+  currentCategory: 0,
+  currentFilter: "",
   setProducts: (list) =>
     set(() => ({
       products: list.reduce((acc, curr) => {
@@ -16,11 +18,11 @@ export const useProductsStore = create((set) => ({
   setFilter: (category) =>
     set((state) => {
       const f = Object.values(state.products).filter(
-        (i) => i.category === category
+        (i) => i.category === state.currentFilter
       );
 
       return {
-        filteredList: category !== "Все" ? f : state.products,
+        filteredList: f,
       };
     }),
   setCount: (id, count, from = "home") =>
@@ -43,6 +45,13 @@ export const useProductsStore = create((set) => ({
 
       return {
         products: p,
+      };
+    }),
+  setCurrentCategory: (category) =>
+    set(() => {
+      return {
+        currentCategory: category.id,
+        currentFilter: category.value,
       };
     }),
 }));

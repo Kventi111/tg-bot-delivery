@@ -1,8 +1,11 @@
 .root {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+
+  background-color: var(--button-secondary);
+  border-radius: 12px;
 }
 
 .count {
@@ -15,6 +18,8 @@
 .counterButton {
   box-sizing: border-box;
   width: 36px;
+
+  background-color: transparent !important;
 
   &.fulled {
     width: 100%;

@@ -23,6 +23,8 @@ export const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { products, setCount: setProductCount } = useProductsStore();
+  const [option, setOption] = useState("");
+  const [options, setOptions] = useState({});
   let [count, setCount] = useState(1);
 
   const detailItem = products[id];
@@ -54,8 +56,11 @@ export const Detail = () => {
           </span>
         </div>
         <div style={{ marginBottom: "24px" }}>
-          <div className={styles.title}>Прожарка</div>
+          {/* <div className={styles.title}>Прожарка</div> */}
           <Select
+            value={option}
+            label={"Прожарка"}
+            onSelected={(value) => setOption(value)}
             items={[
               { id: "1", value: "Не жарить" },
               { id: "2", value: "Слегка поджарить" },
@@ -70,12 +75,17 @@ export const Detail = () => {
           <div className={styles.title}>Дополнительно</div>
 
           <CheckboxGroup
+            selectedItems={options}
             items={[
               { id: "1", value: "Жир" },
               { id: "2", value: "Яйца" },
               { id: "3", value: "Лук" },
             ]}
-            onChange={() => {}}
+            onChange={({ isChecked, value }) => {
+              console.log({ isChecked, value });
+
+              setOptions((prev) => ({ ...prev, [value]: isChecked }));
+            }}
           />
         </div>
       </ContentInner>

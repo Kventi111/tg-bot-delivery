@@ -19,7 +19,7 @@ export const Counter = memo(function Counter({
           <MinusIcon />
         </Button>
       )}
-      {count > 0 && <span className={styles.count}>{count}</span>}
+      {count > 0 && <div className={styles.count}>{count}</div>}
       {count >= 0 && (
         <Button
           className={cls(styles.counterButton, {

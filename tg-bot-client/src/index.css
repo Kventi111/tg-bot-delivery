@@ -4,6 +4,7 @@
   --tg-theme-secondary-bg-color: #131415;
   --tg-theme-text-color: #ffffff;
   --tg-theme-button-color: #2ea6ff;
+  --button-secondary: #313d49;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -45,9 +46,14 @@ button {
   all: unset;
 }
 
+/* .dark-theme {
+  --button-secondary: #313d49;
+} */
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: var(--tg-theme-text-color);
-    background-color: var(--tg-theme-bg-color);
+    /* color: var(--tg-theme-text-color);
+    background-color: var(--tg-theme-bg-color); */
+    --button-secondary: #eceef0;
   }
 }

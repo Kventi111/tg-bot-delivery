@@ -19,3 +19,27 @@
     color: var(--tg-theme-text-color);
   }
 }
+
+/* color: var(--tg-theme-text-color);
+background-color: var(--tg-theme-secondary-bg-color); */
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--tg-theme-bg-color);
+  }
+  50% {
+    background-color: var(--tg-theme-secondary-bg-color);
+  }
+  100% {
+    background-color: var(--tg-theme-bg-color);
+  }
+}
+
+.skeleton {
+  width: 70px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: var(--tg-theme-bg-color);
+
+  animation: skeleton-loading 3s infinite ease-out;
+}

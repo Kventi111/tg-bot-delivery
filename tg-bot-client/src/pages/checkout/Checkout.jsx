@@ -3,6 +3,7 @@ import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
 import { useCartStore } from "../../store/cart";
+import { formatPrice } from "../../utils/formatNumber";
 
 import styles from "./Checkout.module.css";
 
@@ -28,7 +29,7 @@ export const Checkout = () => {
               <div key={i.id} className={styles.item}>
                 <div className={styles.name}>{i.name}</div>
                 <span className={styles.count}>{`X${i.count}`}</span>
-                <div className={styles.price}>{i.price} ₽</div>
+                <div className={styles.price}>{formatPrice(i.price)}</div>
               </div>
             ))}
             <div className={styles.item}>
@@ -39,13 +40,13 @@ export const Checkout = () => {
           <div className={styles.separator} />
           <div className={styles.total}>
             <div>Игото</div>
-            <div className={styles.price}>{totalPrice} ₽</div>
+            <div className={styles.price}>{formatPrice(totalPrice)}</div>
           </div>
         </div>
       </ContentInner>
       <Footer>
         <Button size="lg" onClick={() => {}}>
-          Оформить заказ {totalPrice} ₽
+          Оформить заказ {formatPrice(totalPrice)}
         </Button>
       </Footer>
     </>

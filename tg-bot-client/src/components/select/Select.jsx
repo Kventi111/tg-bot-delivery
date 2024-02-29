@@ -8,16 +8,19 @@ import styles from "./Select.module.css";
 export const Select = ({
   placeholder,
   items,
+  label,
   isValid,
   helperText,
   withHelper,
   onSelected,
+  value,
 }) => (
   <RadixSelect.Root onValueChange={onSelected}>
     <div className={styles.selectContainer}>
       <RadixSelect.Trigger
         className={clx(styles.selectTrigger, {
           [styles.error]: !isValid,
+          [styles.focused]: value,
         })}
       >
         <RadixSelect.Value placeholder={placeholder} />
@@ -25,6 +28,7 @@ export const Select = ({
           <ChevronIcon />
         </RadixSelect.Icon>
       </RadixSelect.Trigger>
+      <label className={styles.label}>{label}</label>
       {withHelper && (
         <span
           className={clx(styles.helperText, {

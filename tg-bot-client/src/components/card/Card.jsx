@@ -1,9 +1,13 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
 
-import { Button } from "../button/Button";
+import { formatPrice } from "../../utils/formatNumber";
 
 import styles from "./Card.module.css";
+
+export function CardSkeleton() {
+  return <span className={styles.skeleton} />;
+}
 
 export const Card = memo(function Card({
   imgUrl,
@@ -18,7 +22,7 @@ export const Card = memo(function Card({
         <img src={imgUrl} height={70} alt="" />
       </div>
       <div className={styles.description}>
-        {/* <span className={styles.price}>{price} ₽</span> */}
+        <span className={styles.price}>{formatPrice(price)}</span>
         <span className={styles.name}>{name}</span>
         <span className={styles.options}>{options}</span>
       </div>
