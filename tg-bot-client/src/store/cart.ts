@@ -1,12 +1,19 @@
 import { create } from "zustand";
 
-export const useCartStore = create(() => ({
+import { Product } from './types'
+
+type CartStore = {
+  lineItems: Record<number,Product>
+  totalPrice: number
+}
+
+export const useCartStore = create<CartStore>(() => ({
   lineItems: {},
   totalPrice: 0,
 }));
 
 // actions
-export const addToCard = (item) =>
+export const addToCard = (item: Product) =>
   useCartStore.setState((state) => {
     const l = state.lineItems;
 
@@ -17,7 +24,7 @@ export const addToCard = (item) =>
     };
   });
 
-export const deleteFromCart = (id) =>
+export const deleteFromCart = (id: number) =>
   useCartStore.setState((state) => {
     const l = state.lineItems;
 

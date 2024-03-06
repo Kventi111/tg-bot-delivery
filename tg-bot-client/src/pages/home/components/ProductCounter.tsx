@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import { Counter } from "../../../components/counter/Counter";
 import { useProductsStore } from "../../../store/products";
 
-export const ProductCounter = ({ id, productCount = 0 }) => {
+type ProductCounterProps = {
+  id: number
+  productCount: number
+}
+
+
+export const ProductCounter = ({ id, productCount = 0 }: ProductCounterProps) => {
   let [count, setCount] = useState(productCount);
 
   const setProductCount = useProductsStore((state) => state.setCount);

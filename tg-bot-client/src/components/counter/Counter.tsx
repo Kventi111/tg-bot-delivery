@@ -7,11 +7,17 @@ import MinusIcon from "./minus.svg?react";
 
 import styles from "./Counter.module.css";
 
+type CounterProps = {
+  count: number;
+  onIncrease: () => void;
+  onDecrease: () => void;
+};
+
 export const Counter = memo(function Counter({
   count = 0,
   onIncrease,
   onDecrease,
-}) {
+}: CounterProps) {
   return (
     <div className={styles.root}>
       {count > 0 && (
@@ -34,9 +40,3 @@ export const Counter = memo(function Counter({
     </div>
   );
 });
-
-Counter.propTypes = {
-  count: Number,
-  onIncrease: () => {},
-  onDecrease: () => {},
-};
