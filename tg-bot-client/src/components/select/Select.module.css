@@ -7,7 +7,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 18px 9px 18px;
+  padding: 18px 20px;
   width: calc(100% - 16px * 2);
   border-radius: 8px;
   background-color: var(--tg-theme-bg-color);
@@ -97,6 +97,7 @@
 .selectTrigger:focus + label,
 .selectTrigger.focused + label {
   top: 12px;
+  left: 18px;
   font-size: 12px;
   color: #8e8e93;
 }
