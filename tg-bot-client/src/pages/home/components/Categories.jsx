@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useGesture } from "@use-gesture/react";
 import { Chip } from "../../../components/chip/Chip";
 import { useProductsStore } from "../../../store/products";
+import { useProfileStore } from "../../../store/profile";
 
 import styles from "../Home.module.css";
 
@@ -13,6 +14,9 @@ export const Categories = () => {
 
   const categories = useProductsStore((state) => state.categories);
   const setFilter = useProductsStore((state) => state.setFilter);
+  const token = useProfileStore((state) => state.token);
+
+  console.log({ token });
   const { currentCategory, setCurrentCategory } = useProductsStore((state) => ({
     currentCategory: state.currentCategory,
     setCurrentCategory: state.setCurrentCategory,

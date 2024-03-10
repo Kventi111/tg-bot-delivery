@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { tokenApi } from "./api";
+import { userApi, ORG_ID, tokenApi } from "./api";
 import { API_KEY } from "./api/constants";
 import { Home } from "./pages/home/Home";
 import { PageLayout } from "./pages/PageLayout";
@@ -9,19 +9,36 @@ import { Cart } from "./pages/cart/Cart";
 import { Checkout } from "./pages/checkout/Checkout";
 import { OrderDetails } from "./pages/orderDetail/OrderDetails";
 import { TestPage } from "./pages/testPage/TestPage";
+import { useProfileStore } from "./store/profile";
 
 const tg = window.Telegram.WebApp;
 
 tg.expand();
 
 function App() {
-  console.log({ tg });
+  const { setToken } = useProfileStore();
 
   useEffect(() => {
     tg.ready();
 
     // nomenclatureApi.getMenu("54e21b58-a3d7-402a-83ad-d96b074a171a")
-    tokenApi.getToken(API_KEY);
+    tokenApi
+      .getToken(API_KEY)
+      .then((data) => {
+        setToken(data.token);
+        return data;
+      })
+      .then(({ token }) => {
+        userApi.getUserInfo(
+          {
+            phone: "+79890500210",
+            organizationId: ORG_ID,
+          },
+          {
+            Authorization: `Bearer ${token}`,
+          }
+        );
+      });
   }, []);
 
   return (

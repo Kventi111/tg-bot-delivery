@@ -12,5 +12,12 @@ export default defineConfig({
       key: readFileSync(".cert/key.pem"),
       cert: readFileSync(".cert/cert.pem"),
     },
+    proxy: {
+      "/api": {
+        target: "https://api-ru.iiko.services",
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 });
