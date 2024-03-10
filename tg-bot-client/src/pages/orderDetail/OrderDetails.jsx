@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useIMask } from "react-imask";
 import { Button } from "../../components/button/Button";
 import { Radio } from "../../components/radio/Radio";
 import { Input } from "../../components/input/Input";
@@ -19,10 +20,11 @@ export const OrderDetails = () => {
   const navigate = useNavigate();
   const [checkoutType, setCheckoutType] = useState("");
   const [paymentType, setPaymentType] = useState("");
-  const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [comment, setComment] = useState("");
   tg.BackButton.show();
+
+  const { ref, value, setValue } = useIMask({ mask: "+7 (000) 000 00 00" });
 
   return (
     <>
@@ -54,8 +56,9 @@ export const OrderDetails = () => {
           <div className={styles.field}>
             <Input
               label="Номер телефона"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              ref={ref}
             />
           </div>
           <div className={styles.field}>

@@ -18,6 +18,10 @@ tg.BackButton.onClick(() => {
   history.back();
 });
 
+export const EmptyState = () => {
+  return "Тут пока пусто вернитесь и Добавьте товары в корзину";
+};
+
 export const Cart = () => {
   const navigate = useNavigate();
   const { lineItems, totalPrice } = useCartStore();
@@ -28,17 +32,21 @@ export const Cart = () => {
       <ContentInner>
         <div className={styles.title}>Заказ</div>
         <div className={styles.root}>
-          {Object.values(lineItems).map((item) => (
-            <CartItem
-              key={item.id}
-              imgUrl={item.imgUrl}
-              name={item.name}
-              desc={"medium"}
-              price={item.price}
-            >
-              <ProductCounter id={item.id} productCount={item.count} />
-            </CartItem>
-          ))}
+          {Object.values(lineItems).length ? (
+            Object.values(lineItems).map((item) => (
+              <CartItem
+                key={item.id}
+                imgUrl={item.imgUrl}
+                name={item.name}
+                desc={"medium"}
+                price={item.price}
+              >
+                <ProductCounter id={item.id} productCount={item.count} />
+              </CartItem>
+            ))
+          ) : (
+            <EmptyState />
+          )}
         </div>
       </ContentInner>
       <Footer>
