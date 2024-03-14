@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
@@ -7,16 +6,8 @@ import { formatPrice } from "../../utils/formatNumber";
 
 import styles from "./Checkout.module.css";
 
-const tg = window.Telegram.WebApp;
-
-tg.BackButton.onClick(() => {
-  tg.BackButton.hide();
-  history.back();
-});
-
 export const Checkout = () => {
   const { lineItems, totalPrice } = useCartStore();
-  tg.BackButton.show();
 
   return (
     <>

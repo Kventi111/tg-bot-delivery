@@ -4,7 +4,18 @@ import styles from "./Radio.module.css";
 
 import CheckIcon from "./check.svg?react";
 
-export const Radio = ({ onSelect, selected = "", items }) => (
+type Radioitem = {
+  label: string;
+  value: string;
+};
+
+type RadioProps = {
+  onSelect: (value: string) => void;
+  selected: string;
+  items: Radioitem[];
+};
+
+export const Radio = ({ onSelect, selected = "", items }: RadioProps) => (
   <RadioGroup.Root className={styles.radioGroupRoot} value={selected}>
     {items.map(({ label, value }) => (
       <button
