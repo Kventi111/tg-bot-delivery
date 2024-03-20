@@ -9,6 +9,7 @@ import styles from "./Counter.module.css";
 
 export const Counter = memo(function Counter({
   count = 0,
+  size,
   onIncrease,
   onDecrease,
 }) {
@@ -26,7 +27,7 @@ export const Counter = memo(function Counter({
             [styles.fulled]: count === 0,
           })}
           onClick={onIncrease}
-          size="md"
+          size={size}
         >
           <PlusIcon />
         </Button>

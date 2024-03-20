@@ -12,7 +12,7 @@
 
   &.secondary {
     background-color: var(--button-secondary);
-    color: var(--tg-theme-button-text-color);
+    color: var(--tg-theme-text-color);
   }
 
   &.size-lg {

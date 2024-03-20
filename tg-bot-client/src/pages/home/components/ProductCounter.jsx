@@ -33,6 +33,7 @@ export const ProductCounter = ({ id, productCount = 0 }) => {
   return (
     <Counter
       count={count}
+      size="md"
       onDecrease={onDecreaseCount}
       onIncrease={onIncreaseCount}
     />

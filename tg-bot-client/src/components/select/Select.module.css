@@ -3,11 +3,10 @@
 }
 
 .selectTrigger {
-  /* position: relative; */
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 18px 9px 18px;
+  padding: 20px 18px;
   width: calc(100% - 16px * 2);
   border-radius: 8px;
   background-color: var(--tg-theme-bg-color);
@@ -85,7 +84,7 @@
 
 .label {
   position: absolute;
-  left: 14px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: #888;

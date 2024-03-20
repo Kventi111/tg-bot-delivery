@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "../../components/button/Button";
 import { Select } from "../../components/select/Select";
@@ -56,7 +56,6 @@ export const Detail = () => {
           </span>
         </div>
         <div style={{ marginBottom: "24px" }}>
-          {/* <div className={styles.title}>Прожарка</div> */}
           <Select
             value={option}
             label={"Прожарка"}
@@ -92,11 +91,12 @@ export const Detail = () => {
       <Footer>
         <div className={styles.actions}>
           <Counter
+            size="lg"
             count={count}
             onDecrease={onDecreaseCount}
             onIncrease={onIncreaseCount}
           />
-          <Button onClick={onAdd} size="md">
+          <Button onClick={onAdd} size="lg">
             Добавить {count * detailItem.price} ₽
           </Button>
         </div>

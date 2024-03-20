@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
@@ -27,8 +26,10 @@ export const Checkout = () => {
           <div className={styles.list}>
             {Object.values(lineItems).map((i) => (
               <div key={i.id} className={styles.item}>
-                <div className={styles.name}>{i.name}</div>
-                <span className={styles.count}>{`X${i.count}`}</span>
+                <div className={styles.name}>
+                  <span>{i.name}</span>
+                  <span className={styles.count}>{`X${i.count}`}</span>
+                </div>
                 <div className={styles.price}>{formatPrice(i.price)}</div>
               </div>
             ))}

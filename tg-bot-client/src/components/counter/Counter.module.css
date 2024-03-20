@@ -21,6 +21,10 @@
 
   background-color: transparent !important;
 
+  svg {
+    color: var(--tg-theme-text-color);
+  }
+
   &.fulled {
     width: 100%;
   }

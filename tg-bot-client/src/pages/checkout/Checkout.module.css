@@ -25,15 +25,15 @@
 }
 
 .name {
-  white-space: nowrap;
-  overflow: hidden;
-  min-width: 50%;
-  text-overflow: ellipsis;
+  width: 100%;
+  .count {
+    margin-left: 8px;
+  }
 }
 
 .price {
+  white-space: nowrap;
   padding-right: 16px;
-  width: 100%;
   text-align: right;
 }
 
@@ -44,8 +44,4 @@
 
 .label {
   display: flex;
-}
-
-.count {
-  margin-left: 4px;
 }
