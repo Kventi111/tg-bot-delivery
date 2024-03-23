@@ -5,6 +5,22 @@ import ChevronIcon from "./chevron.svg?react";
 
 import styles from "./Select.module.css";
 
+type SelectItem = {
+  id: string;
+  value: string;
+};
+
+type SelectProps = {
+  placeholder: string;
+  items: SelectItem[];
+  label: string;
+  isValid: boolean;
+  helperText: string;
+  withHelper: boolean;
+  onSelected: () => void;
+  value: string;
+};
+
 export const Select = ({
   placeholder,
   items,
@@ -14,7 +30,7 @@ export const Select = ({
   withHelper,
   onSelected,
   value,
-}) => (
+}: SelectProps) => (
   <RadixSelect.Root onValueChange={onSelected}>
     <div className={styles.selectContainer}>
       <RadixSelect.Trigger

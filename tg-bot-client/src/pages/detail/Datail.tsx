@@ -12,13 +12,6 @@ import { useProductsStore } from "../../store/products";
 
 import styles from "./Datail.module.css";
 
-const tg = window.Telegram.WebApp;
-
-tg.BackButton.onClick(() => {
-  tg.BackButton.hide();
-  history.back();
-});
-
 export const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -28,7 +21,6 @@ export const Detail = () => {
   let [count, setCount] = useState(1);
 
   const detailItem = products[id];
-  tg.BackButton.show();
 
   const onIncreaseCount = useCallback(() => {
     setCount((prevCount) => prevCount + 1);

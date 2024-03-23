@@ -5,6 +5,15 @@ import CheckIcon from "./check.svg?react";
 
 import styles from "./Checkbox.module.css";
 
+export type CheckboxProps = {
+  id: string
+  value: string
+  checked: boolean
+  withLabel: boolean
+  className: string
+  onChecked: ({ isChecked,value }: { isChecked: boolean,value?: string }) => void
+}
+
 export const Checkbox = ({
   id,
   value,
@@ -12,8 +21,8 @@ export const Checkbox = ({
   withLabel = true,
   onChecked,
   className,
-}) => {
-  const checkHandler = (isChecked) =>
+}: CheckboxProps) => {
+  const checkHandler = (isChecked: boolean) =>
     value ? onChecked({ isChecked, value }) : onChecked({ isChecked });
 
   return (

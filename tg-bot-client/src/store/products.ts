@@ -1,8 +1,25 @@
 import { create } from "zustand";
 import { addToCard, calcTotalPrice, deleteFromCart } from "./cart";
 
-export const useProductsStore = create((set) => ({
-  products: new Map(),
+import { Product } from './types'
+
+type Category = {
+  id: number
+  value: string
+}
+
+type ProductsStote = {
+  products: Record<number,Product>
+  categories: string[]
+  currentCategory: number
+  currentFilter: string
+  setCount: (id: number, count: number, from: "home" | "detail") => void
+  setProducts: (list: Product[]) => void
+  setCurrentCategory: (category: Category) => void
+}
+
+export const useProductsStore = create<ProductsStote>((set) => ({
+  products: {},
   categories: [],
   currentCategory: 0,
   currentFilter: "",
@@ -15,16 +32,6 @@ export const useProductsStore = create((set) => ({
       }, {}),
       categories: [...new Set(list.map((i) => i.category))],
     })),
-  setFilter: (category) =>
-    set((state) => {
-      const f = Object.values(state.products).filter(
-        (i) => i.category === state.currentFilter
-      );
-
-      return {
-        filteredList: f,
-      };
-    }),
   setCount: (id, count, from = "home") =>
     set((state) => {
       const p = state.products;

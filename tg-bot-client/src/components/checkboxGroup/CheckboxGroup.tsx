@@ -1,7 +1,13 @@
-import { Checkbox } from "../checkbox/Checkbox";
+import { Checkbox,CheckboxProps } from "../checkbox/Checkbox";
 import styles from "./CheckboxGroup.module.css";
 
-export const CheckboxGroup = ({ items, selectedItems, onChange }) => {
+type CheckboxGroupProps = {
+  items: { id: string,value: string }[]
+  selectedItems: CheckboxProps[]
+  onChange: () => void
+}
+
+export const CheckboxGroup = ({ items, selectedItems, onChange }: CheckboxGroupProps) => {
   return (
     <div className={styles.root}>
       {items.map((item) => (
@@ -18,7 +24,6 @@ export const CheckboxGroup = ({ items, selectedItems, onChange }) => {
             </div>
             <div className={styles.label}>{item.value}</div>
           </div>
-          {/* <span className={styles.separator} /> */}
         </>
       ))}
     </div>

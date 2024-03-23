@@ -6,16 +6,8 @@ import { formatPrice } from "../../utils/formatNumber";
 
 import styles from "./Checkout.module.css";
 
-const tg = window.Telegram.WebApp;
-
-tg.BackButton.onClick(() => {
-  tg.BackButton.hide();
-  history.back();
-});
-
 export const Checkout = () => {
   const { lineItems, totalPrice } = useCartStore();
-  tg.BackButton.show();
 
   return (
     <>

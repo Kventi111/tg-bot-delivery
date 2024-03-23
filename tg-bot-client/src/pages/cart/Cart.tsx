@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useBackButton } from "@tma.js/sdk-react";
 import { Button } from "../../components/button/Button";
 import { Footer } from "../../components/layout/Footer";
 import { ContentInner } from "../../components/layout/ContentInner";
@@ -23,9 +25,17 @@ export const EmptyState = () => {
 };
 
 export const Cart = () => {
+  const backButton = useBackButton();
   const navigate = useNavigate();
   const { lineItems, totalPrice } = useCartStore();
-  tg.BackButton.show();
+
+  useEffect(() => {
+    backButton.show();
+    backButton.on("click", () => {
+      backButton.hide();
+      history.back();
+    });
+  }, []);
 
   return (
     <>
@@ -38,7 +48,7 @@ export const Cart = () => {
                 key={item.id}
                 imgUrl={item.imgUrl}
                 name={item.name}
-                desc={"medium"}
+                description={"medium"}
                 price={item.price}
               >
                 <ProductCounter id={item.id} productCount={item.count} />

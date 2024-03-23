@@ -7,7 +7,6 @@ import { useProfileStore } from "../../../store/profile";
 import styles from "../Home.module.css";
 
 export const Categories = () => {
-  // const [currentCategory, setCurrentCategory] = useState(null);
   const wheelOffset = useRef(0);
   const dragOffset = useRef(0);
   const target = useRef();

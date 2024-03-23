@@ -9,12 +9,6 @@ import { ContentInner } from "../../components/layout/ContentInner";
 
 import styles from "./OrderDetails.module.css";
 
-const tg = window.Telegram.WebApp;
-
-tg.BackButton.onClick(() => {
-  tg.BackButton.hide();
-  history.back();
-});
 
 export const OrderDetails = () => {
   const navigate = useNavigate();
@@ -22,7 +16,6 @@ export const OrderDetails = () => {
   const [paymentType, setPaymentType] = useState("");
   const [address, setAddress] = useState("");
   const [comment, setComment] = useState("");
-  tg.BackButton.show();
 
   const { ref, value, setValue } = useIMask({ mask: "+7 (000) 000 00 00" });
 
